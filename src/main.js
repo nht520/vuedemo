@@ -17,12 +17,16 @@ import 'mint-ui/lib/style.css'
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
+import Vuex from 'vuex'
+import store from './store/store'
+Vue.use(Vuex)
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

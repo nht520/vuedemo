@@ -8,7 +8,10 @@
 <script>
     export default {
         name: "Content",
-        data(){
+      components: {
+
+      },
+      data(){
           return{
             msg:'我是详情',
             list:[],
