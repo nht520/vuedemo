@@ -35,7 +35,7 @@
                .then((res)=>{
                   console.log(res)
                   this.list=res.body.result;
-                  this.$store.commit('restList',res.body.result);
+                    this.$store.commit('restList',res.body.result);
                }).catch(err =>{
                   console.log(err)
              })
@@ -43,7 +43,7 @@
         },
         mounted(){
           this.requestData();
-          //判断 store里面有没有数据
+          //判断 store里面有没有数据 如果没有就请求
           var restData=this.$store.state.list;
           console.log(restData.length);
           if(restData.length>0){

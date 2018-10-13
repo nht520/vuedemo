@@ -1,6 +1,7 @@
 <template>
     <div class="gitList">
       <p>{{msg}}</p>
+
       <ul>
         <li v-for="item in splist">
           <p >{{item.title}}</p>
@@ -38,6 +39,7 @@
       },
 
       mounted() {
+        //  页面加载完成获取store里面的数据list并赋值给splist
         this.splist=this.$store.state.list;
         this.actions = [{
           name: '拍照',
