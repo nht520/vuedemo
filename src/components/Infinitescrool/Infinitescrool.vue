@@ -1,27 +1,34 @@
 <template>
   <div id="Infinitescrool">
-    <p>1</p>
-    <ul
-      class="list"
-      v-infinite-scroll="loadMore"
-      infinite-scroll-disabled="loading"
-      infinite-scroll-distance="10"
-    >
-      <li v-for="item in list" class="page-infinite-listitem">{{ item.title }}</li>
-    </ul>
-    <p v-show="show" class="page-infinite-loading">
-      <mt-spinner type="fading-circle"></mt-spinner>
-      加载中...
-    </p>
+    <mt-loadmore :top-method="loadTop"   ref="loadmore" >
+      <ul
+        ref="loadmore"
+        class="list"
+        :top-method="loadTop"
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="10"
+      >
+        <li v-for="(item,aid) in list">
+            <router-link :to="'/Content/'+item.aid">
+              {{item.title}}
+            </router-link>
+        </li>
+      </ul>
+      <p v-show="show" class="page-infinite-loading">
+        <img src="../../assets/Spinner.svg"/>
+        加载中...
+      </p>
+    </mt-loadmore>
   </div>
 </template>
+
 <style>
   .list li{
     height: 3.5rem;
   }
   .page-infinite-loading {
     text-align: center;
-    background: #f00;
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px;
@@ -37,10 +44,17 @@
         loading:false,
         list:[],
         page:1,
-        text:''
       }
     },
     methods: {
+      //触发 store
+      loadTop:function() { //组件提供的下拉触发方法
+        //下拉刷新
+        this.requestDate();
+        //反转数据：
+        this.list.reverse();
+        this.$refs.loadmore.onTopLoaded();// 固定方法，查询完要调用一次，用于重新定位
+      },
       loadMore() {
         this.requestDate();
       },
@@ -61,7 +75,12 @@
           },(err)=>{
               console.log(err);
           })
-      }
+      },
     },
+    mounted(){
+
+
+
+    }
   };
 </script>
