@@ -14,7 +14,7 @@ Vue.use(Vuex)
 /*1.state在vuex中用于存储数据*/
 const state={
 
-
+  cont:0,
   list:[],
 
 }
@@ -22,6 +22,15 @@ const state={
 /*2.mutations里面放的是方法，方法主要用于改变state里面的数据*/
 const mutations={
 
+  contlist(){
+    ++state.cont;
+  },
+  contlist1(){
+    --state.cont;
+    if( state.cont<=1 ){
+      state.cont=0
+    }
+  },
   restList(state,data){
     state.list = data;
   },
@@ -32,6 +41,9 @@ const mutations={
 // 改变state里面的count数据的时候会触发 getters 里面的方法 获取新的值 (基本用不到)
 const getters= {
 
+  // incCount:(state) =>{
+  //     return
+  //   }
 
 }
 // Action 基本没有用
@@ -40,6 +52,7 @@ const getters= {
 // 	Action 可以包含任意异步操作。
 //
 const actions= {
+
   // incMutationsCount(context) {    /*因此你可以调用 context.commit 提交一个 mutation*/
   //   context.commit('incCount');    /*执行 mutations 里面的incCount方法 改变state里面的数据*/
   // }

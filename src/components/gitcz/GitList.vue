@@ -1,7 +1,10 @@
 <template>
     <div class="gitList">
       <p>{{msg}}</p>
-
+      <p>{{this.$store.state.cont}}</p>
+      <button @click="contlist()">
+        加
+      </button>
       <ul>
         <li v-for="item in splist">
           <p >{{item.title}}</p>
@@ -14,47 +17,54 @@
 </template>
 
 <script>
-    import GitNuws from "./GitNuws";
-    export default {
-        name: "gitList",
-      components: {GitNuws},
-      data(){
-          return{
-            msg:"我是一个列表组件",
-            sheetVisible: false,
-            actions: [],
-            splist:[]
-          }
-      },
-      methods: {
-        takePhoto() {
-          console.log('taking photo');
-        },
-        openAlbum() {
-          console.log('opening album');
-        },
-        goBack() {
-          history.go(-1);
-        }
-      },
+import GitNuws from "./GitNuws";
+export default {
+  name: "gitList",
+  components: { GitNuws },
+  data() {
+    return {
+      msg: "我是一个列表组件",
+      sheetVisible: false,
+      actions: [],
+      splist: []
+    };
+  },
+  methods: {
+    takePhoto() {
+      console.log("taking photo");
+    },
+    openAlbum() {
+      console.log("opening album");
+    },
+    goBack() {
+      history.go(-1);
+    },
 
-      mounted() {
-        //  页面加载完成获取store里面的数据list并赋值给splist
-        this.splist=this.$store.state.list;
-        this.actions = [{
-          name: '拍照',
-          method: this.takePhoto
-        }, {
-          name: '从相册中选择',
-          method: this.openAlbum
-        }, {
-          name: '返回上一步',
-          method: this.goBack
-          }];
-      }
+    contlist() {
+      this.$store.commit("contlist");
     }
+  },
+
+  mounted() {
+    //  页面加载完成获取store里面的数据list并赋值给splist
+    this.splist = this.$store.state.list;
+    this.actions = [
+      {
+        name: "拍照",
+        method: this.takePhoto
+      },
+      {
+        name: "从相册中选择",
+        method: this.openAlbum
+      },
+      {
+        name: "返回上一步",
+        method: this.goBack
+      }
+    ];
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

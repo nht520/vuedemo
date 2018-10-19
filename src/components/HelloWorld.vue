@@ -16,7 +16,7 @@
     <router-link to="/Login">js跳转页面</router-link>
 <br/><hr>
     <!--js跳转页面 -->
-    <router-link to="/Infinitescrool">mint ui 刷新</router-link>
+    <router-link to="/Infinitescrool">mint ui下拉 刷新 上啦加载更多</router-link>
     <br/><hr>
 
 <br/><hr>
