@@ -5,6 +5,7 @@
       <button @click="contlist()">
         加
       </button>
+
       <ul>
         <li v-for="item in splist">
           <p >{{item.title}}</p>
@@ -39,7 +40,6 @@ export default {
     goBack() {
       history.go(-1);
     },
-
     contlist() {
       this.$store.commit("contlist");
     }

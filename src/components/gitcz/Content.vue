@@ -1,7 +1,9 @@
 <template>
     <div id="Content">
       <h2>{{list.title}}</h2>
-      <div v-html="list.content"></div>
+      <div v-html="list.content">
+
+      </div>
     </div>
 </template>
 

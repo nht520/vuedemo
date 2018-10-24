@@ -1,7 +1,7 @@
 <template>
   <div id="todolist">
 
-    <input type="text" v-model="todo"  @keyup="add1($event)">
+    <input type="text" v-model="todo"  @keyup="keyup($event)">
     <button @click="add" >+增加</button>
     <br/>
     <!--购物车功能-->
@@ -40,14 +40,15 @@
               });
               this.todo=''
           },
-          add1(e){
+          keyup(e){
             if(e.keyCode ==13){
               // 1.获取文本框内的值
-                this.list.push({
-                  title:this.todo,
-                  checkbox:false
-                });
-              this.todo=''
+                this.add()
+                // this.list.push({
+                //   title:this.todo,
+                //   checkbox:false
+                // });
+                this.todo=''
              }
           },
           removdelt(key){
