@@ -63,11 +63,13 @@ export default {
     },
     requestDate() {
       this.loading = true; //请求数据的开关
-      var api = "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=" + this.page;
+      var api = "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page="+ this.page;
       this.$http.get(api).then(res => {
           console.log(res.body.result.length);
           this.list = this.list.concat(res.body.result);
+          //每次请求完在自增加一次
           ++this.page;
+          //判断最后一页是否有数据
           if (res.body.result.length < 20) {
             this.loading = true; //true 请求终止
             this.text="已经没有数据了哦";
