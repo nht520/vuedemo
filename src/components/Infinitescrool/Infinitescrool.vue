@@ -1,8 +1,5 @@
 <template>
   <div id="Infinitescrool">
-    <button>上一页</button>
-    <span>1/10</span>
-    <button>下一页</button>
     <mt-loadmore :top-method="loadTop"   ref="loadmore" >
       <ul
         ref="loadmore"
@@ -22,6 +19,7 @@
         <img src="../../assets/Spinner.svg"/>
         加载中...
       </p>
+      <p v-text="text"></p>
     </mt-loadmore>
   </div>
 </template>
@@ -46,6 +44,7 @@ export default {
       show: true,
       loading: false,
       list: [],
+      text:'',
       page: 1
     };
   },
@@ -64,28 +63,27 @@ export default {
     },
     requestDate() {
       this.loading = true; //请求数据的开关
-      var api =
-        "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=" +
-        this.page;
-      this.$http.get(api).then(
-        res => {
+      var api = "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=" + this.page;
+      this.$http.get(api).then(res => {
           console.log(res.body.result.length);
           this.list = this.list.concat(res.body.result);
           ++this.page;
           if (res.body.result.length < 20) {
             this.loading = true; //true 请求终止
-            // this.text="已经没有数据了哦"
+            this.text="已经没有数据了哦";
             this.show = false;
           } else {
             this.loading = false; //false 继续请求
+            this.show = true;
           }
-        },
-        err => {
+        }, err => {
           console.log(err);
         }
       );
     }
   },
-  mounted() {}
+  mounted(){
+
+  }
 };
 </script>
