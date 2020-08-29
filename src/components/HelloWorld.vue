@@ -92,7 +92,7 @@ import One from "./Ffzjzj/One";
 import GitHome from "./gitcz/GitHome";
 import Login from "./loginRoute/Login";
 
-
+import Axios from 'axios';
 export default {
   components: {
     Login,
@@ -130,7 +130,47 @@ export default {
       console.log(e);
       e.srcElement.style.background='red';
       console.log(e.srcElement.dataset)  //获取自定义属性的值
+    },
+
+
+    tdyk(){
+        // 一些积累的小知识
+        // 把文件追加到一个list数组里面
+        // this.imgList.push(file);
+        // console.log(this.imgList);
+        // //  替换数组中某一项的值 ，或者改变里面的值
+        // for(var l = 0;l< bb.length;l++){
+        //     this.tableData[l].id = arr[l];
+        // }
+        // // 请求数据
+        // const api = "www.baidu.com";
+        // // 传递数据方法2种
+        // const date = new URLSearchParams();
+        //       date.append("name",0)
+        // let param ={
+        //       name:0,
+        //       size:12,
+        // }
+        // Axios.get(api,date).then((res)=>{
+        //   console.log(res);
+        // }).catch((err)=>{
+        //   console.log(err);
+        // })
+        // shishi(){
+        //   var aa = "123456";
+        //   var imglist = this.list;
+        //   var a =[{ id:0,},{id:1,}];
+        //   for(var i = 0; i < imglist.length; i ++){
+        //       imglist[i].distributionUserName = imglist[i].distributionUserName+a[i].id;
+        //   }
+        //   console.log("++++++++");
+        //   console.log(imglist);
+        // },
+
+
     }
+
+    
 
 
 
